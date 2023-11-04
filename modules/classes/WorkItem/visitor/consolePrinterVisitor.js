@@ -1,5 +1,8 @@
-export default class ConsolePrinterVisitor {
+import Visitor from "./visitor.js";
+
+export default class ConsolePrinterVisitor extends Visitor {
     constructor() {
+        super();
         this._projectLevel = 0
     }
 

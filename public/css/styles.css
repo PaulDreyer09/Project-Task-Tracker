@@ -1,0 +1,88 @@
+html,
+body {
+  scroll-behavior: smooth;
+}
+
+body * {
+  box-sizing: border-box;
+  font-family: "Arial Narrow", Arial, sans-serif;
+  transition: ease-in 0.04s;
+}
+
+#project {
+  margin: 0 auto;
+  max-width: 1080px;
+}
+#project .project-display,
+#project .sub-task-display,
+#project .sub-project-display {
+  overflow: hidden;
+  margin-bottom: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+}
+#project .project-display .header,
+#project .sub-task-display .header,
+#project .sub-project-display .header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10px;
+  font-weight: 700;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+#project .project-display label,
+#project .sub-task-display label,
+#project .sub-project-display label {
+  font-weight: bold;
+}
+#project .project-display .estimated-cost-display,
+#project .sub-task-display .estimated-cost-display,
+#project .sub-project-display .estimated-cost-display {
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  align-items: center;
+}
+#project .project-display .estimated-cost-display :first-child,
+#project .sub-task-display .estimated-cost-display :first-child,
+#project .sub-project-display .estimated-cost-display :first-child {
+  margin-right: 20px;
+}
+#project :first-child {
+  margin: 0;
+}
+#project .details-container {
+  padding: 5px 5px 5px 15px;
+}
+#project .sub-task-container {
+  padding-left: 5px;
+}
+#project .project-display {
+  background-color: rgb(255, 255, 255);
+  border: 2px solid rgb(151, 153, 255);
+  border-left-width: 4px;
+  border-right-width: 1px;
+  border-radius: 15px;
+}
+#project .project-display:has(> .focussed) {
+  background-color: rgb(230, 230, 255);
+  border-color: rgb(48, 51, 255) !important;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.4);
+}
+#project .project-display .header {
+  background-color: rgb(151, 153, 255);
+}
+#project .project-display .header.focussed {
+  background-color: rgb(48, 51, 255);
+  color: white;
+}
+#project .sub-task-display {
+  background-color: rgb(255, 252, 246);
+  border: 2px solid rgb(255, 192, 110);
+  border-left-width: 4px;
+  border-radius: 8px;
+}
+#project .sub-task-display .header {
+  background-color: rgb(255, 192, 110);
+}/*# sourceMappingURL=styles.css.map */

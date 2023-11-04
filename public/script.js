@@ -1,4 +1,4 @@
-import WorkItem from './modules/classes/WorkItem/index.js'
+import WorkItem from '../../modules/classes/workItem/index.js'
 
 // Abrstract factory setup
 export const getRegisteredFacory = (workItemTypes) => {
@@ -40,4 +40,9 @@ export const createWorkItemsFromData = (obj, factory) => {
 
 export const ConsolePrintProject = (project) => {
     project.accept(new WorkItem.Visitors.ConsolePrinterVisitor());
+}
+
+export const InitializeDom = (project) => {
+    const display = document.querySelector('#project');
+    project.accept(new WorkItem.Visitors.DomCreationVisitor(display));
 }

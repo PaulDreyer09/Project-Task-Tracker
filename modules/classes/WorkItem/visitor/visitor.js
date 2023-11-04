@@ -1,6 +1,6 @@
 export default class Visitor {
     constructor() {
-        throw new Error('The base class Visitor needs to be derived to be used.');
+        // throw new Error('The base class Visitor needs to be derived to be used.');
     }
 
     enterProject(project) {
