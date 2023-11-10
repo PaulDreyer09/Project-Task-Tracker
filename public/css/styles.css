@@ -9,6 +9,10 @@ body * {
   transition: ease-in 0.04s;
 }
 
+#project > .project-display > .details-container-wrapper {
+  max-height: 9999px !important;
+}
+
 #project {
   margin: 0 auto;
   max-width: 1080px;
@@ -31,6 +35,14 @@ body * {
   font-weight: 700;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
+#project .project-display .header .info,
+#project .sub-task-display .header .info,
+#project .sub-project-display .header .info {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-right: 10px;
+}
 #project .project-display label,
 #project .sub-task-display label,
 #project .sub-project-display label {
@@ -49,8 +61,32 @@ body * {
 #project .sub-project-display .estimated-cost-display :first-child {
   margin-right: 20px;
 }
-#project :first-child {
-  margin: 0;
+#project .completeButton {
+  display: block;
+  height: 25px;
+  width: 25px;
+  padding: 5px;
+  border-radius: 50%;
+  border: 1px solid #bbbbbb;
+  background-color: #eeeeee;
+  cursor: pointer;
+}
+#project .completeButton .inner {
+  display: block;
+  min-height: 100%;
+  min-width: 100%;
+  border-radius: 50%;
+  transition: background-color 0.15s ease-in;
+  background-color: #bbbbbb;
+}
+#project .completeButton.completed {
+  background-color: rgb(161, 160, 255);
+}
+#project .completeButton.completed .inner {
+  background-color: rgb(114, 112, 255);
+}
+#project .completeButton:not(.completed):hover .inner {
+  background-color: rgb(159, 255, 255);
 }
 #project .details-container {
   padding: 5px 5px 5px 15px;
@@ -58,31 +94,54 @@ body * {
 #project .sub-task-container {
   padding-left: 5px;
 }
+#project .project-display .details-container-wrapper,
+#project .sub-task-display .details-container-wrapper {
+  max-height: 0;
+  transition: max-height 0.25s ease-in-out;
+}
+#project .project-display.open,
+#project .sub-task-display.open {
+  max-height: 2000px;
+}
+#project .project-display.open > .details-container-wrapper,
+#project .sub-task-display.open > .details-container-wrapper {
+  max-height: 2000px;
+  min-height: 0;
+}
 #project .project-display {
   background-color: rgb(255, 255, 255);
   border: 2px solid rgb(151, 153, 255);
   border-left-width: 4px;
   border-right-width: 1px;
-  border-radius: 15px;
-}
-#project .project-display:has(> .focussed) {
-  background-color: rgb(230, 230, 255);
-  border-color: rgb(48, 51, 255) !important;
-  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.4);
+  border-radius: 2px;
 }
 #project .project-display .header {
   background-color: rgb(151, 153, 255);
 }
-#project .project-display .header.focussed {
-  background-color: rgb(48, 51, 255);
+#project .project-display.focussed {
+  border-color: rgb(39, 41, 125) !important;
+  background-color: rgb(230, 230, 255);
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.4);
+}
+#project .project-display.focussed > .header {
+  background-color: rgb(39, 41, 125);
   color: white;
 }
 #project .sub-task-display {
-  background-color: rgb(255, 252, 246);
-  border: 2px solid rgb(255, 192, 110);
+  background-color: rgb(246, 253, 255);
+  border: 1px solid rgb(110, 214, 255);
   border-left-width: 4px;
-  border-radius: 8px;
+  border-radius: 15px;
+}
+#project .sub-task-display.focussed {
+  border-color: rgb(2, 133, 169) !important;
+  background-color: rgb(226, 244, 250);
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.4);
+}
+#project .sub-task-display.focussed > .header {
+  background-color: rgb(2, 133, 169);
+  color: white;
 }
 #project .sub-task-display .header {
-  background-color: rgb(255, 192, 110);
+  background-color: rgb(110, 214, 255);
 }/*# sourceMappingURL=styles.css.map */

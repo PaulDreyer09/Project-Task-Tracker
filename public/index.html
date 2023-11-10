@@ -1,22 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Project task tracker</title>
     <script type="module">
-        import * as app from './script.js';
-        import {data} from './sampleData.js';
+      import * as app from "./script.js";
+      import { data } from "../src/sampleData.js";
 
-        const workItem = app.getWorkItems(data);
-        app.ConsolePrintProject(workItem);
-        app.InitializeDom(workItem);
+      const workItem = app.getWorkItem(data);
+      app.InitializeDom(workItem);
     </script>
-    <link rel="stylesheet" href="./css/styles.css">
-</head>
-<body>
-    <div id="project">
-
-    </div>
-</body>
+    <link rel="stylesheet" href="./css/styles.css" />
+  </head>
+  <body>
+    <div id="project"></div>
+  </body>
 </html>

@@ -1,104 +1,175 @@
+$no-max-height: 2000px;
+
 html,
 body {
-    scroll-behavior: smooth;
+  scroll-behavior: smooth;
 }
 
 body * {
-    box-sizing: border-box;
-    font-family: 'Arial Narrow', Arial, sans-serif;
-    transition: ease-in 0.04s;
+  box-sizing: border-box;
+  font-family: "Arial Narrow", Arial, sans-serif;
+  transition: ease-in 0.04s;
+}
+#project > .project-display > .details-container-wrapper {
+  max-height: 9999px !important;
 }
 
 #project {
-    margin: 0 auto;
-    max-width: 1080px;
+  margin: 0 auto;
+  max-width: 1080px;
 
-    .project-display,
-    .sub-task-display,
-    .sub-project-display {
-        // padding: 5px 5px 5px 10px;
-        overflow: hidden;
+  .project-display,
+  .sub-task-display,
+  .sub-project-display {
+    overflow: hidden;
 
-        margin-bottom: 10px;
-        border: 1px solid rgba(0, 0, 0, 0.5);
+    margin-bottom: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.5);
 
-        .header {
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-            align-items: center;
+    .header {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
 
-            padding: 0 10px;
-            font-weight: 700;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-        }
+      padding: 0 10px;
+      font-weight: 700;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 
-        label {
-            font-weight: bold;
-        }
+      .info{
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        margin-right: 10px;
 
-        .estimated-cost-display {
-            display: flex;
-            flex-direction: row;
-            justify-content: start;
-            align-items: center;
-
-            :first-child {
-                margin-right: 20px;
-            }
-        }
+      }
     }
 
-    :first-child {
-        margin: 0;
+    label {
+      font-weight: bold;
     }
 
-    .details-container {
-        padding: 5px 5px 5px 15px;
+    .estimated-cost-display {
+      display: flex;
+      flex-direction: row;
+      justify-content: start;
+      align-items: center;
+
+      :first-child {
+        margin-right: 20px;
+      }
+    }
+  }
+
+  .completeButton {
+    display: block;
+    height: 25px;
+    width: 25px;
+    padding: 5px;
+    border-radius: 50%;
+    border: 1px solid #bbbbbb;
+
+    background-color: #eeeeee;
+    cursor: pointer;
+
+    .inner {
+      display: block;
+      min-height: 100%;
+      min-width: 100%;
+      border-radius: 50%;
+      transition: background-color 0.15s ease-in;
+
+      background-color: #bbbbbb;
     }
 
-    .sub-task-container{
-        padding-left: 5px;
+    &.completed {
+      background-color: rgb(161, 160, 255);
+        
+      .inner {
+        background-color: rgb(114, 112, 255);
+      }
     }
 
-    .project-display {
-        $frameColor: rgb(151, 153, 255);
-        $focusColor: rgb(48, 51, 255);
+    &:not(.completed):hover {
+      .inner {
+        background-color: rgb(159, 255, 255);
+      }
+    }
+  }
 
-        background-color: rgb(255, 255, 255);
+  .details-container {
+    padding: 5px 5px 5px 15px;
+  }
 
-        border: 2px solid $frameColor;
-        border-left-width: 4px;
-        border-right-width: 1px;
-        border-radius: 15px;
-        // border-width: 3px;
+  .sub-task-container {
+    padding-left: 5px;
+  }
 
-        &:has(>.focussed) {
-            background-color: rgb(230, 230, 255);
-            border-color: $focusColor !important;
-            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.4);
-        }
-
-        .header {
-            background-color: $frameColor;
-
-            &.focussed {
-                background-color: $focusColor;
-                color: white;
-            }
-        }
+  .project-display,
+  .sub-task-display {
+    .details-container-wrapper {
+      max-height: 0;
+      transition: max-height 0.25s ease-in-out;
     }
 
-    .sub-task-display {
-        $frameColor: rgb(255, 192, 110);
+    &.open {
+      max-height: $no-max-height;
 
-        background-color: rgb(255, 252, 246);
-        border: 2px solid $frameColor;
-        border-left-width: 4px;
-        border-radius: 8px;
-
-        .header {
-            background-color: $frameColor;
-        }
+      & > .details-container-wrapper {
+        max-height: $no-max-height;
+        min-height: 0;
+      }
     }
+  }
+
+  .project-display {
+    $frameColor: rgb(151, 153, 255);
+    $focusColor: rgb(39, 41, 125);
+
+    background-color: rgb(255, 255, 255);
+
+    border: 2px solid $frameColor;
+    border-left-width: 4px;
+    border-right-width: 1px;
+    border-radius: 2px;
+
+    .header {
+      background-color: $frameColor;
+    }
+
+    &.focussed {
+      border-color: $focusColor !important;
+      background-color: rgb(230, 230, 255);
+      box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.4);
+      > .header {
+        background-color: $focusColor;
+        color: white;
+      }
+    }
+  }
+
+  .sub-task-display {
+    $frameColor: rgb(110, 214, 255);
+    $focusFrameColor: rgb(2, 133, 169);
+    $focusBackgroundColor: rgb(226, 244, 250);
+
+    background-color: rgb(246, 253, 255);
+    border: 1px solid $frameColor;
+    border-left-width: 4px;
+    border-radius: 15px;
+
+    &.focussed {
+      border-color: $focusFrameColor !important;
+      background-color: $focusBackgroundColor;
+      box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.4);
+      > .header {
+        background-color: $focusFrameColor;
+        color: white;
+      }
+    }
+
+    .header {
+      background-color: $frameColor;
+    }
+  }
 }
